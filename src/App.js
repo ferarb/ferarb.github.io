@@ -1,15 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { ThemeProvider } from './context/ThemeContext'
+import { Page } from './components'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-    </div>
+    <ThemeProvider>
+      <Page />
+    </ThemeProvider>
   );
 }
 
