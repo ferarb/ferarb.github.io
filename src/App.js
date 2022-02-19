@@ -1,11 +1,34 @@
-import React from 'react';
-import { ThemeProvider } from './context/ThemeContext'
-import { Page } from './components'
+import React, { useState } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { MySwitch } from './components';
+
+const light = createTheme({
+  palette: {
+    mode: 'light',
+  }
+});
+
+const dark = createTheme({
+  palette: {
+    mode: 'dark',
+  }
+});
 
 function App() {
+  const [theme, setTheme] = useState(light)
+
+  const handleChange = (event) => {
+    setTheme(event.target.checked ? dark : light);
+  }
+
   return (
-    <ThemeProvider>
-      <Page />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <MySwitch 
+        onChange={handleChange} 
+        sx={{ m: 1 }}  
+      />
     </ThemeProvider>
   );
 }
